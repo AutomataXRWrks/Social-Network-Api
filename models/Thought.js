@@ -3,7 +3,6 @@ const reactionSchema = require('./Reaction');
 
 const toughtSchema = new Schema(
   {
-    id: false,
     toughtText: {
       type: String,
       unique: true,
@@ -32,9 +31,10 @@ const toughtSchema = new Schema(
 );
 
 
-toughtSchema.virtual(function (){
+toughtSchema.virtual('friendCount ').get(function (){
     return this.reactions.length;
-})
-const Tought = model('tought', toughtSchema);
+});
 
-module.exports = Tought;
+const Thought = model('Thought', toughtSchema);
+
+module.exports = Thought;

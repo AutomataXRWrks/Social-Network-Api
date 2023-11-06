@@ -1,7 +1,7 @@
 const { User } = require('../models');
 
 module.exports = {
-  // Get all users
+
   async getUsers(req, res) {
     try {
       const users = await User.find();
@@ -10,7 +10,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Get a single user
+
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
@@ -25,7 +25,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // create a new user
+
   async createUser(req, res) {
     try {
       const user = await User.create(req.body);
@@ -34,7 +34,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-    // Updates and user using the findOneAndUpdate method. Uses the ID, and the $set operator in mongodb to inject the request body. Enforces validation.
+  
     async updateUser(req, res) {
       try {
         const user = await User.findOneAndUpdate(
@@ -53,8 +53,7 @@ module.exports = {
         res.status(500).json(err);
       }
     },
-  // Deletes an application from the database. Looks for an app by ID.
-  // Then if the app exists, we look for any users associated with the app based on he app ID and update the applications array for the User.
+
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
@@ -97,7 +96,7 @@ module.exports = {
         });
       }
 
-      res.json({ message: 'Friend successfully created!' });
+      res.json({ message: 'Friend successfully deleted!' });
     } catch (err) {
       res.status(500).json(err);
     }
